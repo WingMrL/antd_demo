@@ -13,6 +13,29 @@ function handleMenuClick(e) {
   console.log('click', e);
 }
 
+class MyComponent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: ''
+    }
+  }
+
+  handleChange = (e) => {
+    this.setState({
+      value: e.target.value.trim()
+    });
+  }
+
+  render() {
+    return (
+      <div>
+        <input type='text' onChange={this.handleChange} value={this.state.value}/>
+      </div>
+    );
+  }
+}
+
 const menu = (
   <Menu onClick={handleMenuClick}>
     <Menu.Item key="1">1st menu item</Menu.Item>
@@ -38,6 +61,7 @@ ReactDOM.render(
         Button <Icon type="down" />
       </Button>
     </Dropdown>
+    <MyComponent />
   </div>
 , document.getElementById('root'));
 
